@@ -11,9 +11,9 @@ function ChoreList() {
 
   useEffect(() => {
     const asyncGet = async () => {
-        const allChores = await CouchFunctions.GetAllChores();
-        setChores(allChores);
-        setLoading(false);
+      const allChores = await CouchFunctions.GetAllChores();
+      setChores(allChores);
+      setLoading(false);
     }
     asyncGet();
   }, []);
@@ -21,14 +21,14 @@ function ChoreList() {
   let choreList = <></>;
   if(chores) {
     choreList = chores.map((chore, index) => {
-        return (<li key={index}>{chore.doc.choreName}</li>);
+      return (<li key={index}><Link to={"/chore/" + chore.id}>{chore.doc.choreName}</Link></li>);
     });
   }
 
   return (
     <div className="App">
       <div>{text}</div>
-      { loading ? <>Loading...</> : <><ul>{choreList}</ul></> }
+      {loading ? <>Loading...</> : <><ul>{choreList}</ul></>}
       <Link to="/addChore">Add Chore</Link>
     </div>
   );

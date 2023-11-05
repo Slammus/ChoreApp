@@ -13,6 +13,10 @@ import AddUser from './pages/AddUser';
 import CompletedChoreList from './pages/CompletedChoreList';
 import RewardList from './pages/RewardList';
 import AddReward from './pages/AddReward';
+import Chore from './pages/Chore';
+import User from './pages/User';
+import EditUser from './pages/EditUser';
+import EditChore from './pages/EditChore';
 
 function App() {
   return (
@@ -45,6 +49,12 @@ function App() {
           <Route path="/addChore" element={<AddChore/>}/>
           <Route path="/addUser" element={<AddUser/>}/>
           <Route path="/addReward" element={<AddReward/>}/>
+
+          <Route path="/chore/:id" element={<Chore/>}/>
+          <Route path="/user/:id" element={<User/>}/>
+
+          <Route path="/chore/:id/edit" element={<EditChore/>}/>
+          <Route path="/user/:id/edit" element={<EditUser/>}/>
         </Routes>
       </div>
     </Router>

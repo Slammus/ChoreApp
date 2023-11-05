@@ -16,8 +16,8 @@ function AddUser() {
   return (
     <div className="App">
       <div>User name: <input placeholder='User name' ref={userNameRef}/></div>
-      <button onClick={() => {
-        CouchFunctions.AddUser(userNameRef.current.value);
+      <button onClick={async () => {
+        await CouchFunctions.AddUser(userNameRef.current.value);
         navigate("/users");
       }}>Add User</button>
     </div>
