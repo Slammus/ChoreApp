@@ -17,6 +17,7 @@ import Chore from './pages/Chore';
 import User from './pages/User';
 import EditUser from './pages/EditUser';
 import EditChore from './pages/EditChore';
+import AddCompletedChore from './pages/AddCompletedChore';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           <li>
             <Link to="/rewards">Rewards List</Link>
           </li>
+          <li>
+            <Link to="/completeChore">Complete a chore</Link>
+          </li>
         </ul>
 
         <hr />
@@ -45,6 +49,8 @@ function App() {
           <Route path="/users" element={<UserList/>}/>
           <Route path="/completedChores" element={<CompletedChoreList/>}/>
           <Route path="/rewards" element={<RewardList/>}/>
+
+          <Route path="/completeChore" element={<AddCompletedChore/>}/>
 
           <Route path="/addChore" element={<AddChore/>}/>
           <Route path="/addUser" element={<AddUser/>}/>

@@ -155,7 +155,7 @@ export default class CouchFunctions {
     }
 
     static async AddCompletedChore(choreID, userID, timeCompleted, minutesTaken, notes) {
-        if(!choreID || typeof choreID != "string" || !userID || typeof userID != "string" || !timeCompleted || typeof timeCompleted != "number") {
+        if(!choreID || typeof choreID != "string" || !userID || typeof userID != "string" || !timeCompleted || typeof timeCompleted != "object") {
             console.error("AddCompletedChore params invalid -> choreID = " + choreID + ", userID = " + userID + ", timeCompleted = " + timeCompleted + ", minutesTaken = " + minutesTaken + ", notes = " + notes);
             return;
         }

@@ -49,7 +49,7 @@ function EditChore() {
           await CouchFunctions.EditChore( chore._id,
                                           choreNameRef.current.value, 
                                           parseFloat(chorePointsRef.current.value), 
-                                          chorePointsPerMinuteRef.current.value == "on", 
+                                          chorePointsPerMinuteRef.current.checked, 
                                           choreAssigneeRef.current.value, 
                                           choreInstructionsRef.current.value);
           navigate("/chores");
