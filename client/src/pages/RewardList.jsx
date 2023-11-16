@@ -21,7 +21,7 @@ function RewardList() {
   let rewardList = <></>;
   if(rewards) {
     rewardList = rewards.map((reward) => {
-        return (<li>{reward.doc.rewardName}</li>);
+        return (<li><Link to={"/reward/" + reward.id}>{reward.doc.rewardName}</Link></li>);
     })
   }
 

@@ -50,7 +50,7 @@ function AddChore() {
                                           choreAssigneeRef.current.value, 
                                           choreInstructionsRef. 
                                           current.value);
-            //navigate("/chores");
+            navigate("/chores");
           }}>Add Chore</button>
         </>
       }

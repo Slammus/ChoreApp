@@ -18,6 +18,12 @@ import User from './pages/User';
 import EditUser from './pages/EditUser';
 import EditChore from './pages/EditChore';
 import AddCompletedChore from './pages/AddCompletedChore';
+import EditCompletedChore from './pages/EditCompletedChore';
+import Reward from './pages/Reward';
+import EditReward from './pages/EditReward';
+import AddClaimedReward from './pages/AddClaimedReward';
+import ClaimedRewardsList from './pages/ClaimedRewardsList';
+import EditClaimedReward from './pages/EditClaimedReward';
 
 function App() {
   return (
@@ -34,10 +40,16 @@ function App() {
             <Link to="/completedChores">Completed Chores List</Link>
           </li>
           <li>
+            <Link to="/claimedRewards">Claimed Rewards List</Link>
+          </li>
+          <li>
             <Link to="/rewards">Rewards List</Link>
           </li>
           <li>
             <Link to="/completeChore">Complete a chore</Link>
+          </li>
+          <li>
+            <Link to="/claimReward">Claim a reward</Link>
           </li>
         </ul>
 
@@ -49,8 +61,10 @@ function App() {
           <Route path="/users" element={<UserList/>}/>
           <Route path="/completedChores" element={<CompletedChoreList/>}/>
           <Route path="/rewards" element={<RewardList/>}/>
+          <Route path="/claimedRewards" element={<ClaimedRewardsList/>}/>
 
           <Route path="/completeChore" element={<AddCompletedChore/>}/>
+          <Route path="/claimReward" element={<AddClaimedReward/>}/>
 
           <Route path="/addChore" element={<AddChore/>}/>
           <Route path="/addUser" element={<AddUser/>}/>
@@ -58,32 +72,17 @@ function App() {
 
           <Route path="/chore/:id" element={<Chore/>}/>
           <Route path="/user/:id" element={<User/>}/>
+          <Route path="/reward/:id" element={<Reward/>}/>
 
           <Route path="/chore/:id/edit" element={<EditChore/>}/>
           <Route path="/user/:id/edit" element={<EditUser/>}/>
+          <Route path="/completedChore/:id/edit" element={<EditCompletedChore/>}/>
+          <Route path="/reward/:id/edit" element={<EditReward/>}/>
+          <Route path="/claimedReward/:id/edit" element={<EditClaimedReward/>}/>
         </Routes>
       </div>
     </Router>
   );
 }
-
-/*  return (
-    <div className="App">
-      <div>{text}</div>
-
-      <button onClick={async () => {
-        const allDocs = await CouchFunctions.GetAll();
-        setText(JSON.stringify(allDocs));
-      }}>Get Chore List</button>
-
-      <input ref={choreNameRef}/>
-      <input type="number" ref={chorePointsRef}/>
-      <button onClick={async () => {
-        const response = await CouchFunctions.AddChore(choreNameRef.current.value, parseInt(chorePointsRef.current.value));
-        setText(JSON.stringify(response));
-      }}>Add Chore</button>
-
-    </div>
-  );*/
 
 export default App;
