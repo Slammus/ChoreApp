@@ -5,7 +5,6 @@ import CouchFunctions from '../couch';
 import { Link } from 'react-router-dom';
 
 function RewardList() {
-  const [text, setText] = useState(null);
   const [rewards, setRewards] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -20,14 +19,13 @@ function RewardList() {
 
   let rewardList = <></>;
   if(rewards) {
-    rewardList = rewards.map((reward) => {
-        return (<li><Link to={"/reward/" + reward.id}>{reward.doc.rewardName}</Link></li>);
+    rewardList = rewards.map((reward, index) => {
+        return (<li key={index}><Link to={"/reward/" + reward.id}>{reward.doc.rewardName}</Link></li>);
     })
   }
 
   return (
     <div className="App">
-      <div>{text}</div>
       { loading ? <>Loading...</> : <><ul>{rewardList}</ul></> }
       <Link to="/addReward">Add Reward</Link>
     </div>
