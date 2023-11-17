@@ -5,7 +5,6 @@ import CouchFunctions from '../couch';
 import { useNavigate } from 'react-router-dom';
 
 function AddChore() {
-  const [text, setText] = useState(null);
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -55,7 +54,6 @@ function AddChore() {
         </>
       }
     </div>
-    
   );
 }
 

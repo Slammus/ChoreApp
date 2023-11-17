@@ -9,7 +9,6 @@ import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function AddCompletedChore() {
-  const [text, setText] = useState(null);
   const [users, setUsers] = useState(null);
   const [chores, setChores] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -83,7 +82,6 @@ function AddCompletedChore() {
         </>
       }
     </div>
-    
   );
 }
 

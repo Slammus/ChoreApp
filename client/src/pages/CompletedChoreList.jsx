@@ -1,12 +1,11 @@
 
 import '../App.css';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import CouchFunctions from '../couch';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 function CompletedChoreList() {
-  const [text, setText] = useState(null);
   const [completedChores, setCompletedChores] = useState(null);
   const [allChores, setAllChores] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
@@ -40,7 +39,6 @@ function CompletedChoreList() {
 
   return (
     <div className="App">
-      <div>{text}</div>
       { loading ? <>Loading...</> : <><ul>{choreList}</ul></> }
     </div>
   );

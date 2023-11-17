@@ -5,7 +5,6 @@ import CouchFunctions from '../couch';
 import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
-  const [text, setText] = useState(null);
   const userNameRef = useRef(null);
   const navigate = useNavigate();
 

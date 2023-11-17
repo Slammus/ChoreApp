@@ -1,6 +1,6 @@
 
 import '../App.css';
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import CouchFunctions from '../couch';
 import { useNavigate } from 'react-router-dom';
 

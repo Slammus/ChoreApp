@@ -5,7 +5,6 @@ import CouchFunctions from '../couch';
 import { Link } from 'react-router-dom';
 
 function ChoreList() {
-  const [text, setText] = useState(null);
   const [chores, setChores] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +26,6 @@ function ChoreList() {
 
   return (
     <div className="App">
-      <div>{text}</div>
       {loading ? <>Loading...</> : <><ul>{choreList}</ul></>}
       <Link to="/addChore">Add Chore</Link>
     </div>
