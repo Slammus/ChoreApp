@@ -41,7 +41,7 @@ function UserList() {
   }
 
   for(let completedChore of allCompletedChores) {
-    choresByUser[completedChore.doc.userID].push(completedChore);
+    choresByUser[completedChore.userID].push(completedChore);
   }
 
 
@@ -54,8 +54,8 @@ function UserList() {
     userList = users.map((user, index) => {
       let pointsTotal = 0;
       for(let chore of choresByUser[user.id]) {
-        const choreDetails = chores.find((choreItem) => chore.doc.choreID == choreItem.id).doc;
-        pointsTotal += choreDetails.chorePointsPerMinute ? choreDetails.chorePoints * chore.doc.minutesTaken : choreDetails.chorePoints;
+        const choreDetails = chores.find((choreItem) => chore.choreID == choreItem.id).doc;
+        pointsTotal += choreDetails.chorePointsPerMinute ? choreDetails.chorePoints * chore.minutesTaken : choreDetails.chorePoints;
       }
       for(let reward of rewardsByUser[user.id]) {
         const rewardDetails = rewards.find((rewardItem) => reward.doc.rewardID == rewardItem.id).doc;

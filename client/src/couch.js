@@ -24,6 +24,21 @@ export default class CouchFunctions {
         return docsJSON;
     }
 
+    static async GetAllSortedBy(db, index) {
+        const query = {
+            selector: {},
+            sort: [],
+            limit: 10000
+        };
+        const sort = {};
+        sort[index] = "desc";
+        query.sort.push(sort);
+
+        const allDocsResponse = await fetch(dbAddress + "/" + db + "/_find", {headers:AUTH_HEADERS, method:"POST", body:JSON.stringify(query)});
+        const allDocsJSON = await allDocsResponse.json();
+        return allDocsJSON.docs;
+    }
+
     static async GetAllChores() {
         return this.GetAll(dbNameChores);
     }
@@ -33,7 +48,7 @@ export default class CouchFunctions {
     }
 
     static async GetAllCompletedChores() {
-        return this.GetAll(dbNameCompletedChores);
+        return this.GetAllSortedBy(dbNameCompletedChores, "timeCompleted");
     }
 
     static async GetAllRewards() {

@@ -21,6 +21,7 @@ function AddCompletedChore() {
   const userRef = useRef(null);
   const dateTimeRef = useRef(null);
   const notesRef = useRef(null);
+  const numHoursRef = useRef(null);
   const numMinsRef = useRef(null);
 
   useEffect(() => {
@@ -66,7 +67,10 @@ function AddCompletedChore() {
             <LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker value={selectedTime} ref={dateTimeRef} onChange={(time) => {setSelectedTime(time)}}/></LocalizationProvider>
           </div>
           {selectedChore && selectedChore.chorePointsPerMinute
-            ? <div>Number of minutes taken:&nbsp;<input type="number" defaultValue={5} ref={numMinsRef}/></div>
+            ? <div>Time taken:<br/>
+                Hours: <input type="number" defaultValue={0} ref={numHoursRef}/>&nbsp;
+                Minutes: <input type="number" defaultValue={0} ref={numMinsRef}/>
+              </div>
             : <></>
           }
           <div>Notes: <textarea placeholder='Notes' cols={100} rows={10} ref={notesRef}></textarea></div>
@@ -76,7 +80,8 @@ function AddCompletedChore() {
               alert("Select a time!");
               return;
             }
-            await CouchFunctions.AddCompletedChore(choreRef.current.value, userRef.current.value, selectedTime, numMinsRef.current ? parseFloat(numMinsRef.current.value) : 0, notesRef.current.value);
+            const minutes = (numHoursRef.current ? parseFloat(numHoursRef.current.value) : 0) * 60 + (numMinsRef.current ? parseFloat(numMinsRef.current.value) : 0);
+            await CouchFunctions.AddCompletedChore(choreRef.current.value, userRef.current.value, selectedTime, minutes, notesRef.current.value);
             navigate("/completedChores");
           }}>Complete Chore</button>
         </>
