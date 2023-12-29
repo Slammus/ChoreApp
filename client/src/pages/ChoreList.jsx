@@ -31,7 +31,7 @@ function ChoreList() {
     }
 
     choreList = chores.map((chore, index) => {
-      const formattedTime = choreByID[chore.id] ? dayjs(choreByID[chore.id].doc.timeCompleted).format("HH:mm:ss[ on ]dddd[ ]DD-MM-YYYY") : "Never";
+      const formattedTime = choreByID[chore.id] ? dayjs(choreByID[chore.id].timeCompleted).format("HH:mm:ss[ on ]dddd[ ]DD-MM-YYYY") : "Never";
       return (<li key={index}><Link to={"/chore/" + chore.id}>{chore.doc.choreName}</Link> (Last completed: {formattedTime})</li>);
     });
   }
