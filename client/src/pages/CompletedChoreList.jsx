@@ -26,20 +26,27 @@ function CompletedChoreList() {
 
   let choreList = <></>;
   if(completedChores) {
+    let prevFormattedDate = null;
     choreList = completedChores.map((completedChore, index) => {
       const choreDetails = allChores.find((choreItem) => completedChore.choreID == choreItem.id).doc;
       const userDetails = allUsers.find((userItem) => completedChore.userID == userItem.id).doc;
-      const formattedTime = dayjs(completedChore.timeCompleted).format("HH:mm:ss[ on ]dddd[ ]DD-MM-YYYY");
-      return (<li key={index}>
-        {choreDetails.choreName} done by {userDetails.userName} at {formattedTime} for {choreDetails.chorePointsPerMinute ? choreDetails.chorePoints * completedChore.minutesTaken : choreDetails.chorePoints} points {choreDetails.chorePointsPerMinute ? "(" + completedChore.minutesTaken + " minutes)" : ""}&nbsp;
-        <Link to={"/completedChore/" + completedChore._id + "/edit"}>Edit</Link>
-      </li>);
-    })
+      const formattedDate = dayjs(completedChore.timeCompleted).format("dddd[ ]MMM D, YYYY");
+      const formattedTime = dayjs(completedChore.timeCompleted).format("h:mm A");
+      const timeChanged = formattedDate !== prevFormattedDate;
+      prevFormattedDate = formattedDate;
+      return (<>
+        {timeChanged ? <><br/><div className='completedChoreDate'>{formattedDate}</div></> : ""}
+        <li key={index}>
+          <span className='completedChoreDate'>{formattedTime}:</span> {choreDetails.choreName} done by <span className='completedChoreDate'>{userDetails.userName}</span> for {choreDetails.chorePointsPerMinute ? choreDetails.chorePoints * completedChore.minutesTaken : choreDetails.chorePoints} points {choreDetails.chorePointsPerMinute ? "(" + completedChore.minutesTaken + " minutes)" : ""}&nbsp;
+          <Link to={"/completedChore/" + completedChore._id + "/edit"}>Edit</Link>
+        </li>
+      </>);
+    });
   }
 
   return (
     <div className="App">
-      { loading ? <>Loading...</> : <><ul>{choreList}</ul></> }
+      { loading ? <>Loading...</> : <><ul style={{textAlign:"left"}}>{choreList}</ul></> }
     </div>
   );
 }
