@@ -33,11 +33,10 @@ function User() {
       const formattedDate = dayjs(completedChore.timeCompleted).format("dddd[ ]MMM D, YYYY");
       const formattedTime = dayjs(completedChore.timeCompleted).format("h:mm A");
       const timeChanged = formattedDate !== prevFormattedDate;
-      prevFormattedDate = formattedDate;
-      console.log("1:" + id);
-      console.log("2:" + completedChore.userID);
       if(id !== completedChore.userID) {
         return (<></>);
+      } else {
+        prevFormattedDate = formattedDate;
       }
       return (<>
         {timeChanged ? <><br/><div className='completedChoreDate'>{formattedDate}</div></> : ""}
